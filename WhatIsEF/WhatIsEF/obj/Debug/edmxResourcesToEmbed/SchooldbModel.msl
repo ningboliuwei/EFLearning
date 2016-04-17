@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchooldbModelStoreContainer" CdmEntityContainer="SchooldbEntities">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="SchooldbModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="Cno" ColumnName="Cno" />
+          <ScalarProperty Name="Cname" ColumnName="Cname" />
+          <ScalarProperty Name="Cpno" ColumnName="Cpno" />
+          <ScalarProperty Name="Ccredit" ColumnName="Ccredit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SCs">
+      <EntityTypeMapping TypeName="SchooldbModel.SC">
+        <MappingFragment StoreEntitySet="SC">
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Cno" ColumnName="Cno" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="SchooldbModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+          <ScalarProperty Name="Ssex" ColumnName="Ssex" />
+          <ScalarProperty Name="Sage" ColumnName="Sage" />
+          <ScalarProperty Name="Sdept" ColumnName="Sdept" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SC_Details">
+      <EntityTypeMapping TypeName="SchooldbModel.SC_Details">
+        <MappingFragment StoreEntitySet="SC_Details">
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="Cname" ColumnName="Cname" />
+          <ScalarProperty Name="Cno" ColumnName="Cno" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Get_Student" FunctionName="SchooldbModel.Store.Get_Student">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SchooldbModel.Get_Student_Result">
+          <ScalarProperty Name="Sno" ColumnName="Sno" />
+          <ScalarProperty Name="Sname" ColumnName="Sname" />
+          <ScalarProperty Name="Ssex" ColumnName="Ssex" />
+          <ScalarProperty Name="Sage" ColumnName="Sage" />
+          <ScalarProperty Name="Sdept" ColumnName="Sdept" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

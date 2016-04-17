@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchooldbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Cno" />
+    </Key>
+    <Property Name="Cno" Type="int" Nullable="false" />
+    <Property Name="Cname" Type="varchar" MaxLength="50" />
+    <Property Name="Cpno" Type="int" />
+    <Property Name="Ccredit" Type="int" />
+  </EntityType>
+  <EntityType Name="SC">
+    <Key>
+      <PropertyRef Name="Sno" />
+      <PropertyRef Name="Cno" />
+    </Key>
+    <Property Name="Sno" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Cno" Type="int" Nullable="false" />
+    <Property Name="Grade" Type="int" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Sno" />
+    </Key>
+    <Property Name="Sno" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Sname" Type="varchar" MaxLength="50" />
+    <Property Name="Ssex" Type="varchar(max)" />
+    <Property Name="Sage" Type="int" />
+    <Property Name="Sdept" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“schooldb.dbo.SC_Details”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="SC_Details">
+    <Key>
+      <PropertyRef Name="Sno" />
+      <PropertyRef Name="Cno" />
+    </Key>
+    <Property Name="Sno" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Sname" Type="varchar" MaxLength="50" />
+    <Property Name="Cno" Type="int" Nullable="false" />
+    <Property Name="Cname" Type="varchar" MaxLength="50" />
+    <Property Name="Grade" Type="int" />
+  </EntityType>
+  <Association Name="FK_SC_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="SC" Type="Self.SC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Cno" />
+      </Principal>
+      <Dependent Role="SC">
+        <PropertyRef Name="Cno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SC_SC">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="SC" Type="Self.SC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Sno" />
+      </Principal>
+      <Dependent Role="SC">
+        <PropertyRef Name="Sno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Get_Student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Sno" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="SchooldbModelStoreContainer">
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SC" EntityType="Self.SC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SC_Details" EntityType="Self.SC_Details" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SC_Details].[Sno] AS [Sno], 
+    [SC_Details].[Sname] AS [Sname], 
+    [SC_Details].[Cno] AS [Cno], 
+    [SC_Details].[Cname] AS [Cname], 
+    [SC_Details].[Grade] AS [Grade]
+    FROM [dbo].[SC_Details] AS [SC_Details]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_SC_Course" Association="Self.FK_SC_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="SC" EntitySet="SC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SC_SC" Association="Self.FK_SC_SC">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="SC" EntitySet="SC" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

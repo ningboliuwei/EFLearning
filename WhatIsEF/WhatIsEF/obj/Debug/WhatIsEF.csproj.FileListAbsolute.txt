@@ -1,0 +1,10 @@
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\WhatIsEF.exe.config
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\WhatIsEF.exe
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\WhatIsEF.pdb
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\EntityFramework.dll
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\EntityFramework.xml
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\obj\Debug\WhatIsEF.exe
+C:\GitHub\EFLearning\WhatIsEF\WhatIsEF\obj\Debug\WhatIsEF.pdb
